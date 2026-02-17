@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upload to GCS</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 18px; }
+    .msg { margin-top: 14px; padding: 10px 12px; border-radius: 8px; }
+    .ok { background: #ecfdf5; border: 1px solid #a7f3d0; }
+    .err { background: #fef2f2; border: 1px solid #fecaca; }
+    button { padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Upload a file to Google Cloud Storage</h2>
+
+  <div class="card">
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+      <input type="file" name="file" required />
+      <button type="submit">Upload</button>
+    </form>
+
+    {% if message %}
+      <div class="msg {{ 'ok' if success else 'err' }}">
+        {{ message }}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
